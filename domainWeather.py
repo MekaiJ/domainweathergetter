@@ -25,41 +25,6 @@ def plot_temps(temps):
 
 
 def main():
-    # TODO: Look at the code below for an example of how to do
-    # API calls. I would recommend first uncommenting and
-    # understanding the code, and then commenting the code back
-    # out. The code is, largely, step 4.
-    # base API string for weather.gov
-    '''
-    weather_s = "https://api.weather.gov/points/"
-
-    # sys.argv[1] gives us the command line input
-    # sys.argv[0] is the name of the python file
-    print(weather_s + argv[1])
-
-    # use the commandline input and the weather_s to make API call
-    response = get(weather_s + argv[1])
-
-    # convert it to json
-    js = loads(response.text)
-
-    # find the forecast URL based on the API page
-    forecast_URL = js['properties']['forecast']
-
-    # print link that we use for next API call
-    print(forecast_URL)
-
-    # call the API again to get theforecast
-    final_response = get(forecast_URL)
-
-    # parse json
-    js = loads(final_response.text)
-
-    # print the forecast
-    print(js['properties']['periods'][0]['detailedForecast'])
-
-    plot_temps([70,72,75,78,70,65,60])
-    '''
 
     # STEP 1: Look up IP address of specified domain
     domainIP = gethostbyname(argv[1])
@@ -82,7 +47,7 @@ def main():
             postalcode = element.strip("PostalCode:").strip()
     location = {"address": address, "city": city, "state": state, "zip": postalcode}
 
-    # STEP 3: Convert the physical address to latitude/longitude TODO: Finish this up
+    # STEP 3: Convert the physical address to latitude/longitude
     url = "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress"
     params = {
         "address": f"{location['address']}, {location['city']}, {location['state']}, {location['zip']}",
